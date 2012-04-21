@@ -17,3 +17,7 @@ ZubiUserBundle_edituser:
 ZubiUserBundle_list:
     pattern: /list
     defaults: { _controller: ZubiUserBundle:List:list }
+
+ZubiUserBundle_delete:
+    pattern: /delete
+    defaults: { _controller: ZubiUserBundle:Delete:delete }

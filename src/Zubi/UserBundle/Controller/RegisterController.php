@@ -20,7 +20,7 @@ class RegisterController extends Controller
                 ->add('haslo', 'password', array('label' => 'Hasło'))
                 ->add('kraj', 'text', array('label' => 'Kraj'))
                 ->add('miasto', 'text', array('label' => 'Miasto'))
-                ->add('data_ur', 'date', array( 'widget' => 'single_text', 'label' => 'Data urodzenia', 'years' => range(1900,2012), 'format' => 'yyyy-MM-dd'))
+                ->add('data_ur', 'date', array( 'widget' => 'choice', 'label' => 'Data urodzenia', 'years' => range(1900,2012), 'format' => 'yyyy-MM-dd'))
                 ->getForm();
 
 // 'attr' => array('data-calendar' => '{}'),

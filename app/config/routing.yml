@@ -1,7 +1,6 @@
 ZubiArticleByndle:
     resource: "@ZubiArticleBundle/Resources/config/routing.yml"
     prefix:   /article
-  
 
 ZubiUserBundle:
     resource: "@ZubiUserBundle/Resources/config/routing.yml"
