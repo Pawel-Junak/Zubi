@@ -3,6 +3,9 @@
 {% block sidebartitle %}Artykuły{% endblock %}
 {% block sidebaritems %}
     <li class="active"><a href="{{ path('ZubiArticleBundle_homepage') }}">Lista artykułów</a></li>
+    {% if is_granted('ROLE_ADMIN') %} 
+        <li><a href="{{ path('ZubiArticleBundle_groups') }}">Lista grup art.</a></li>
+    {% endif %}  
     <li><a href="{{ path('ZubiIndexBundle_homepage') }}">Strona główna serwisu</a></li>
 {% endblock %}
 
@@ -18,17 +21,23 @@
         {{ app.session.flash('errorMsg') }}
     </div>
 {% endif %}
-
 <h3>Lista artykułów</h3>
 <br />
-   <ol> 
-    {% set a = 0 %}
+   <ol>     
     {% for article in articles %}
-            <li>{{ article.title }}&nbsp;&nbsp;&nbsp;|&nbsp;
-            <a href="{{editLinks[a]}}">Pokaż</a>&nbsp;|&nbsp;            
+            <li>{{ article.title }}&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="{{ url('ZubiArticleBundle_showarticle', { 'id': article.id }) }}">Czytaj artykuł</a>      
+            {% if is_granted('ROLE_ADMIN') %} 
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="{{ url('ZubiArticleBundle_delete', { 'id': article.id }) }}"> Usuń artykuł </a>               
+                &nbsp;&nbsp;|&nbsp;&nbsp; 
+                <a href="{{ url('ZubiArticleBundle_edit', { 'id': article.id }) }}"> Zmień artykuł </a>               
+            {% endif %}
             </li>
-            {% set a = a + 1 %}
     {% endfor %}
    </ol>
 <br />
+{% if is_granted('ROLE_ADMIN') %} 
+        <a class="btn btn-primary" href="{{ path('ZubiArticleBundle_add') }}">Dodaj nowy artykuł</a>
+{% endif %}
 {% endblock %}

@@ -93,6 +93,9 @@ class User implements UserInterface, \Serializable
         return $this->id;
     }
 
+    public function setId($id) {
+        $this->id = $id;
+    }
     /**
      * Set haslo
      *
@@ -358,6 +361,9 @@ class User implements UserInterface, \Serializable
 
     public function getRoles()
     {
+        //TODO: popraić! Chwilowo do testów admi b@b.pl jest adminem.
+        if ($this->email === 'b@b.pl')
+            return array('ROLE_ADMIN');
         return array('ROLE_USER');
     }
 
@@ -413,4 +419,9 @@ class User implements UserInterface, \Serializable
     {
         return $this->stations;
     }
+    
+     public function __toString() {
+        return $this->email;
+    }
+    
 }

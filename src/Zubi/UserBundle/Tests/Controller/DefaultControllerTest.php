@@ -9,7 +9,6 @@ class DefaultControllerTest extends WebTestCase
     public function testIndex()
     {
         $client = static::createClient();
-        $crawler = $client->followRedirects(true);
 
         $crawler = $client->request('GET', '/profile');
         $this->assertEquals(200, $client->getResponse()->getStatusCode());

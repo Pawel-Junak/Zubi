@@ -3,9 +3,6 @@
 {% block sidebartitle %}Artykuły{% endblock %}
 {% block sidebaritems %}
     <li class="active"><a href="{{ path('ZubiArticleBundle_homepage') }}">Lista artykułów</a></li>
-    {% if is_granted('ROLE_ADMIN') %} 
-        <li><a href="{{ path('ZubiArticleBundle_groups') }}">Lista grup art.</a></li>
-    {% endif %}  
     <li><a href="{{ path('ZubiIndexBundle_homepage') }}">Strona główna serwisu</a></li>
 {% endblock %}
 
@@ -21,14 +18,8 @@
         {{ app.session.flash('errorMsg') }}
     </div>
 {% endif %}
-
-<h3>{{article.title}}</h3>
-<h6>Kategoria artykułu: {{category.name}}</h6>
-<h7>Autor: {{author.imie}} {{author.nazwisko}}</h7><br />
-<h7>Dodał: {{creator.email}} </h7>
-<br />
-<br /><blockquote>{{article.content}}</blockquote>
-<br />
-<a href="{{backLink}}">Powrót do listy artykułów</a>
-<br />
+<h3>Usunięcie grup artykułów o id {{ id }}</h3>
+{% if is_granted('ROLE_ADMIN') %} 
+        <a class="btn btn-primary" href="{{ path('ZubiArticleBundle_add') }}">Dodaj nowy artykuł</a>        
+{% endif %}
 {% endblock %}

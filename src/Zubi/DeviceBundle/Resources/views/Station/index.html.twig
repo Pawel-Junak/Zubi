@@ -3,8 +3,11 @@
 {% block sidebartitle %}Urządzenia użytkownika{% endblock %}
 
 {% block sidebaritems %}
+
     <li class="active"><a href="{{ path('ZubiDeviceBundle_homepage') }}">Lista zarejestrowanych urządzeń</a></li>
     <li><a href="{{ path('ZubiDeviceBundle_addStation') }}">Zartejestruj nowe urządzenie</a></li>
+    <li><a href="{{ path('ZubiDeviceBundle_measurements') }}">Lista pomiarów</a></li>
+
 {% endblock %}
 
 {% block body %}

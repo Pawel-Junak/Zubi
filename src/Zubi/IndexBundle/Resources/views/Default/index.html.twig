@@ -12,22 +12,29 @@
         };
         
         var map = new google.maps.Map(document.getElementById("mapCanvas"), myOptions);
-        
-        var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(51.107885,17.038538),
-          map: map,
-          title: "Siema siema",
-        });
-        
-        google.maps.event.addListener(marker, 'click', function() {
-          
-          var infowindow = new google.maps.InfoWindow({ 
-            content: 'test' 
-          });
+        var marker = new Array();
+        var infowindow = new Array();
 
-          infowindow.open(map, marker);
+        {% if stations is defined and stations|length > 0 %}
+          {% for st in stations %}
 
-        });
+            marker[{{ loop.index0 }}] = new google.maps.Marker({
+              position: new google.maps.LatLng({{ st.latitude }},{{ st.longitude }}),
+              map: map,
+              title: "",
+            });
+            
+            google.maps.event.addListener(marker[{{ loop.index0 }}], 'click', function() {
+              
+              infowindow[{{ loop.index0 }}] = new google.maps.InfoWindow({ 
+                content: 'Stacja: {{ st.hash }}<br />{{ st.street }} - {{ st.city }} - {{ st.country}}' 
+              });
+
+              infowindow[{{ loop.index0 }}].open(map, marker[{{ loop.index0 }}]);
+
+            });
+          {% endfor %}
+        {% endif %}
       }
       
 
