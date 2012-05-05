@@ -1,0 +1,11 @@
+ZubiAdminBundle_homepage:
+    pattern:  /
+    defaults: { _controller: ZubiAdminBundle:Default:index }
+
+ZubiAdminBundle_list:
+    pattern:  /list
+    defaults: { _controller: ZubiAdminBundle:List:list }
+
+ZubiAdminBundle_edituser:
+    pattern: /edit/{id}
+    defaults: { _controller: ZubiAdminBundle:Edituser:edit }

@@ -1,3 +1,7 @@
+ZubiAdminBundle:
+    resource: "@ZubiAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
 ZubiArticleByndle:
     resource: "@ZubiArticleBundle/Resources/config/routing.yml"
     prefix:   /article

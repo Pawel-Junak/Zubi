@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new Zubi\FaqBundle\ZubiFaqBundle(),
             new Zubi\UserBundle\ZubiUserBundle(),
             new Zubi\ArticleBundle\ZubiArticleBundle(),
+            new Zubi\AdminBundle\ZubiAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
