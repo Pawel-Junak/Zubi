@@ -45,9 +45,8 @@
   </tbody>
 </table>
 	<tr>
-    <form action="{{ path('ZubiUserBundle_delete') }}" method="get">
-      <button type="submit" class="btn-primary">skasuj konto</button>
+    <form action="{{ path('ZubiUserBundle_delete',  { 'id': user.id }) }}" method="get">
+      <input type="submit" class="btn-primary" value="Skasuj konto" />
     </form>
   </tr>
-
 {% endblock %}

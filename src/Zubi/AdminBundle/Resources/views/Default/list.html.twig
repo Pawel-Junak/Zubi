@@ -19,6 +19,7 @@
     			<th>kraj</th>
           <th>data ur</th>
           <th>opcje</th>
+          <th>admin</th>
     		</tr>
     	</thead>
     {% for user in users %}
@@ -32,6 +33,13 @@
             <a href="{{ path('ZubiUserBundle_delete',  { 'id': user.id }) }}">skasuj</a>
             //
             <a href="{{ path('ZubiAdminBundle_edituser', { 'id': user.id }) }}">edytuj</a>
+          </td>
+          <td>
+            {% if user.idstatus == 1 %}
+            <a href="{{ path('ZubiAdminBundle_status',  { 'id': user.id }) }}">wylacz</a>
+            {% else %}
+            <a href="{{ path('ZubiAdminBundle_status',  { 'id': user.id }) }}">wlacz</a>
+            {% endif %}
           </td>
     		</tr>
     	</tbody>

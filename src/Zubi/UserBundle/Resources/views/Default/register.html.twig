@@ -11,6 +11,7 @@
 
 {% block body %}
 <form action="{{ path('ZubiUserBundle_register') }}" method="post" novalidate="novalidate"{{ form_enctype(form) }}>
+
 {{ form_errors(form) }}
 
 <div>
@@ -54,6 +55,7 @@
 {% endblock %}
 
 {% block javascript %}
+
 <script type="text/javascript">
 
       $('#info_email').popover({title: "E-mail", content: "Format: XXXX@XXXX.XX"});

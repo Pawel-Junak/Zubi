@@ -34,7 +34,7 @@ class EdituserController extends Controller
                 $em->flush();
 
 
-                return $this->redirect($this->generateUrl('ZubiAdminBundle_homepage'));
+                return $this->redirect($this->generateUrl('ZubiAdminBundle_list'));
             }
         }
         

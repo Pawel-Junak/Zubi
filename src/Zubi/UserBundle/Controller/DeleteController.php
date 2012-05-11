@@ -9,18 +9,32 @@ use Symfony\Component\HttpFoundation\Request;
 class DeleteController extends Controller
 {
     
-    public function deleteAction(Request $request)
+    public function deleteAction(Request $request, $id)
     {
     	$user = new User();
     	$user = $this->get('security.context')->getToken()->getUser();
 
-        $this->get('request')->getSession()->invalidate();
-        $this->get("security.context")->setToken(null);
+        if($id == $user->getId())
+        {
+            $this->get('request')->getSession()->invalidate();
+            $this->get("security.context")->setToken(null);
 
-    	$em = $this->getDoctrine()->getEntityManager();
-    	$em->remove($user);
-    	$em->flush();
+        	$em = $this->getDoctrine()->getEntityManager();
+        	$em->remove($user);
+    	    $em->flush();
 
-        return $this->redirect(($this->generateUrl('ZubiIndexBundle_homepage')));
+            return $this->redirect(($this->generateUrl('ZubiIndexBundle_homepage')));
+        }
+        else
+        {
+            $user = $this->getDoctrine()->getRepository('ZubiUserBundle:User')
+                ->find($id);
+
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->remove($user);
+            $em->flush();
+
+            return $this->redirect(($this->generateUrl('ZubiAdminBundle_list')));
+        }
     }
 }

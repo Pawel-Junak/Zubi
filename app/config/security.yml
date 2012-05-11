@@ -1,6 +1,6 @@
 security:
     encoders:
-        Zubi\UserBundle\Entity\User: plaintext
+        Zubi\UserBundle\Entity\User: sha512
 
 
     role_hierarchy:

@@ -9,3 +9,7 @@ ZubiAdminBundle_list:
 ZubiAdminBundle_edituser:
     pattern: /edit/{id}
     defaults: { _controller: ZubiAdminBundle:Edituser:edit }
+
+ZubiAdminBundle_status:
+    pattern: /status/{id}
+    defaults: { _controller: ZubiAdminBundle:Status:status }

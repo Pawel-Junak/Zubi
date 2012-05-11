@@ -35,7 +35,13 @@ class RegisterController extends Controller
                 $user->setKrajPrezentacja(1);
                 $user->setMiastoPrezentacja(1);
                 $user->setData_UrPrezentacja(1);
+                $user->setIdStatus(0);
                 
+                $factory = $this->get('security.encoder_factory');
+                $encoder = $factory->getEncoder($user);
+                $password = $encoder->encodePassword($user->getHaslo(), $user->getSalt());
+                $user->setHaslo($password);
+
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($user);
                 $em->flush();

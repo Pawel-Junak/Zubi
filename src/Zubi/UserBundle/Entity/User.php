@@ -341,7 +341,12 @@ class User implements UserInterface, \Serializable
      *
      * @param Zubi\UserBundle\Entity\Status $idStatus
      */
-    public function setIdStatus(\Zubi\UserBundle\Entity\Status $idStatus)
+    // public function setIdStatus(\Zubi\UserBundle\Entity\Status $idStatus)
+    // {
+    //     $this->id_status = $idStatus;
+    // }
+
+    public function setIdStatus($idStatus)
     {
         $this->id_status = $idStatus;
     }
@@ -363,6 +368,8 @@ class User implements UserInterface, \Serializable
     {
         //TODO: popraić! Chwilowo do testów admi b@b.pl jest adminem.
         if ($this->email === 'b@b.pl')
+            return array('ROLE_ADMIN');
+        if ($this->id_status)
             return array('ROLE_ADMIN');
         return array('ROLE_USER');
     }

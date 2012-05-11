@@ -10,6 +10,9 @@ Zubi\UserBundle\Entity\User:
         haslo:
             type: string
             length: 255
+        salt:
+            type: string
+            length: 255
         email:
             type: string
             length: 255
@@ -32,19 +35,21 @@ Zubi\UserBundle\Entity\User:
             type: date
         data_ur_prezentacja:
             type: boolean
+        id_status:
+            type: boolean
     oneToOne:
         id_osoby:
             targetEntity: Osoba
             joinColumn:
                 name: id_osoby
                 referencedColumnName: id
-    manyToOne:
-        id_status:
-            targetEntity: Status
-            inversedBy: users
-            joinColumn:
-                name: id_status
-                referencedColumnName: id
+    # manyToOne:
+    #     id_status:
+    #         targetEntity: Status
+    #         inversedBy: users
+    #         joinColumn:
+    #             name: id_status
+    #             referencedColumnName: id
     oneToMany:
         stations:
             targetEntity: Zubi\DeviceBundle\Entity\Station
